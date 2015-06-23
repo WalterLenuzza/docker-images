@@ -7,9 +7,9 @@ RUN apk add --update-cache --upgrade bash curl && \
 
 # Install confd
 RUN curl -Lo /usr/sbin/confd \
-    https://github.com/kelseyhightower/confd/releases/download/v0.9.0/confd-0.9.0-linux-amd64 && \
-    [ "$(sha1sum /usr/sbin/confd)" = '2c4e706af253c31f99a11005eae5a7349b6062b3  /usr/sbin/confd' ] && \
-    chmod +x /usr/sbin/confd
+    https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64 && \
+    [ "$(sha1sum /usr/sbin/confd)" = '900a528939e5291279a27d21c7e56e48cf89a60e  /usr/sbin/confd' ] && \
+    mkdir -p /etc/confd/{conf.d,templates} && chmod +x /usr/sbin/confd
 
 # Install BATS
 RUN curl -Lo /tmp/bats-0.4.0.tar.gz \
