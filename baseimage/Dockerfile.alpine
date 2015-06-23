@@ -12,7 +12,7 @@ ENV CONFD_SHA 900a528939e5291279a27d21c7e56e48cf89a60e
 RUN curl -Lo /usr/sbin/confd \
     https://github.com/kelseyhightower/confd/releases/download/v$CONFD_VERSION/confd-$CONFD_VERSION-linux-amd64 && \
     [ "$(sha1sum /usr/sbin/confd)" = "$CONFD_SHA  /usr/sbin/confd" ] && \
-    mkdir -p /etc/confd/{conf.d,templates} && chmod +x /usr/sbin/confd
+    chmod +x /usr/sbin/confd && mkdir -p /etc/confd/conf.d /etc/confd/conf.d/templates
 
 # Install BATS
 ENV BATS_VERSION 0.4.0
