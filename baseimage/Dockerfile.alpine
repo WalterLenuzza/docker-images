@@ -27,4 +27,4 @@ RUN curl -Lo /tmp/bats.tar.gz \
 COPY tests /root/tests/
 RUN bats /root/tests && rm -rf /root/tests
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]
