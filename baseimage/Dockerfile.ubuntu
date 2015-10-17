@@ -1,25 +1,34 @@
 FROM ubuntu:14.04
-MAINTAINER Rackspace <support@rackspace.com>
+MAINTAINER WalterLenuzza
 
-# Install latest BASH and clean cache
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get upgrade bash curl -y && \
-    apt-get clean all
+# Install latest BASH, cURL and clean cache
+RUN apk add --update-cache --upgrade bash curl && \
+    rm -rf /var/cache/apk/*
 
-# Install confd
+
+# Install confd (www.confd.io)
+ENV CONFD_VERSION 0.10.0
+ENV CONFD_SHA 900a528939e5291279a27d21c7e56e48cf89a60e
+
 RUN curl -Lo /usr/sbin/confd \
-    https://github.com/kelseyhightower/confd/releases/download/v0.9.0/confd-0.9.0-linux-amd64 && \
-    [ "$(sha1sum /usr/sbin/confd)" = '2c4e706af253c31f99a11005eae5a7349b6062b3  /usr/sbin/confd' ] && \
-    chmod +x /usr/sbin/confd
+    https://github.com/kelseyhightower/confd/releases/download/v$CONFD_VERSION/confd-$CONFD_VERSION-linux-amd64 && \
+    [ "$(sha1sum /usr/sbin/confd)" = "$CONFD_SHA  /usr/sbin/confd" ] && \
+    chmod +x /usr/sbin/confd && mkdir -p /etc/confd/conf.d /etc/confd/templates
 
-# Install BATS
-RUN curl -Lo /tmp/bats-0.4.0.tar.gz \
-    https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz && \
-    [ "$(sha1sum /tmp/bats-0.4.0.tar.gz)" = 'cb8a5f4c844a5f052f915036130def31140fce94  /tmp/bats-0.4.0.tar.gz' ] && \
-    tar xzf /tmp/bats-0.4.0.tar.gz -C /tmp && /tmp/bats-0.4.0/install.sh /usr/local && rm -rf /tmp/bats-0.4.0*
+
+# Install BATS (github.com/sstephenson/bats)
+ENV BATS_VERSION 0.4.0
+ENV BATS_SHA cb8a5f4c844a5f052f915036130def31140fce94
+
+RUN curl -Lo /tmp/bats.tar.gz \
+    https://github.com/sstephenson/bats/archive/v$BATS_VERSION.tar.gz && \
+    [ "$(sha1sum /tmp/bats.tar.gz)" = "$BATS_SHA  /tmp/bats.tar.gz" ] && \
+    tar xzf /tmp/bats.tar.gz -C /tmp && /tmp/bats-$BATS_VERSION/install.sh /usr/local && rm -rf /tmp/bats*
+
 
 # Run tests
 COPY tests /root/tests/
 RUN bats /root/tests && rm -rf /root/tests
 
-ENTRYPOINT ["/bin/bash"]
+
+CMD ["/bin/bash"]
