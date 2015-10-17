@@ -1,6 +1,8 @@
 # Docker images
 
-[![Docker Repository on Quay.io](https://quay.io/repository/walterlenuzza/docker-images/status "Docker Repository on Quay.io")](https://quay.io/repository/walterlenuzza/docker-images)
+[![Docker Repository on Quay.io](https://quay.io/repository/walterlenuzza/baseimage/status "Docker Repository on Quay.io")](https://quay.io/repository/walterlenuzza/baseimage) `baseimage`
+
+[![Docker Repository on Quay.io](https://quay.io/repository/walterlenuzza/managedbaseimage/status "Docker Repository on Quay.io")](https://quay.io/repository/walterlenuzza/managedbaseimage) `managedbaseimage`
 
 ## Components
 Docker images based on [Alpine Linux][alpine] official [image][alpine-image],
