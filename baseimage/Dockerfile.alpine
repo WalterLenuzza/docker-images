@@ -1,6 +1,7 @@
 FROM alpine
 MAINTAINER WalterLenuzza
 
+
 # Install latest BASH, cURL and clean cache
 RUN apk add --update-cache --upgrade bash curl && \
     rm -rf /var/cache/apk/*
@@ -31,4 +32,4 @@ COPY tests /root/tests/
 RUN bats /root/tests && rm -rf /root/tests
 
 
-CMD ["/bin/bash"]
+ENTRYPOINT ["/bin/bash"]
