@@ -10,6 +10,12 @@
   [ "$status" -eq 0 ]
 }
 
+@test "confd 0.10.0 installed" {
+  run confd --version
+  [ "$status" -eq 0 ]
+  [ "${lines[0]}" = "confd 0.10.0" ]
+}
+
 @test "BATS 0.4.0 installed" {
   run bats --version
   [ "$status" -eq 0 ]

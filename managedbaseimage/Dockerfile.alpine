@@ -1,10 +1,20 @@
-FROM ubuntu:14.04
+FROM alpine
 MAINTAINER WalterLenuzza
 
 
 # Install latest BASH, cURL and clean cache
 RUN apk add --update-cache --upgrade bash curl && \
     rm -rf /var/cache/apk/*
+
+
+# Install confd (www.confd.io)
+ENV CONFD_VERSION 0.10.0
+ENV CONFD_SHA 900a528939e5291279a27d21c7e56e48cf89a60e
+
+RUN curl -Lo /usr/sbin/confd \
+    https://github.com/kelseyhightower/confd/releases/download/v$CONFD_VERSION/confd-$CONFD_VERSION-linux-amd64 && \
+    [ "$(sha1sum /usr/sbin/confd)" = "$CONFD_SHA  /usr/sbin/confd" ] && \
+    chmod +x /usr/sbin/confd && mkdir -p /etc/confd/conf.d /etc/confd/templates
 
 
 # Install BATS (github.com/sstephenson/bats)
