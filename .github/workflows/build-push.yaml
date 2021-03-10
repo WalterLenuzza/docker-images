@@ -27,7 +27,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      ##
       ## Caddy
+      ##
       - name: Docker meta
         uses: crazy-max/ghaction-docker-meta@v1
         id: docker_meta

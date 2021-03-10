@@ -1,18 +1,18 @@
 # Docker images
 
-[![Docker Repository on Quay.io](https://quay.io/repository/walterlenuzza/baseimage/status "Docker Repository on Quay.io")](https://quay.io/repository/walterlenuzza/baseimage) `baseimage`
+[![build-push](https://github.com/waltlenu/docker-images/actions/workflows/build-push.yaml/badge.svg)](https://github.com/waltlenu/docker-images/actions/workflows/build-push.yaml)
 
-[![Docker Repository on Quay.io](https://quay.io/repository/walterlenuzza/managedbaseimage/status "Docker Repository on Quay.io")](https://quay.io/repository/walterlenuzza/managedbaseimage) `managedbaseimage`
-
-## Components
-Docker images based on [Alpine Linux][alpine] official [image][alpine-image],
-configured through [confd][confd], tested with [BATS][bats]
-
+A collection of public Docker images, based on [Alpine Linux][alpine] official [image][alpine-image], tested with [BATS][bats], hosted on the [Docker Hub](https://hub.docker.com/u/waltlenu).
 
 [alpine]: http://alpinelinux.org
-[alpine-image]: https://github.com/gliderlabs/docker-alpine
-[confd]: https://github.com/kelseyhightower/confd
-[bats]: https://github.com/sstephenson/bats
+[alpine-image]: https://hub.docker.com/_/alpine
+[bats]: https://github.com/bats-core/bats-core
+
+## Images
+
+| Image          | Size                                               | Pulls                                               |
+| -------------- | -------------------------------------------------- | --------------------------------------------------- |
+| [caddy](caddy) | ![](https://badgen.net/docker/size/waltlenu/caddy) | ![](https://badgen.net/docker/pulls/waltlenu/caddy) |
 
 ## License
-The code in this repository, unless otherwise noted, is APACHE licensed. See the `LICENSE` file in this repository.
+The code in this repository, unless otherwise noted, is APACHE licensed. See the [LICENSE](LICENSE) file in this repository.
