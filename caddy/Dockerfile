@@ -36,4 +36,4 @@ RUN set -eux; \
 WORKDIR /home/nonroot
 ENTRYPOINT ["/sbin/tini", "--"]
 
-CMD ["caddy", "run", "-config" "/home/nonroot/Caddyfile"]
+CMD ["/usr/sbin/caddy", "run", "-config", "/home/nonroot/Caddyfile"]
