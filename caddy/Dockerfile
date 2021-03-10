@@ -17,6 +17,7 @@ RUN set -eux; \
         bind-tools \
         caddy \
         curl \
+        nss-tools \
         tini
 
 # Use the non-root user to run our application
@@ -35,4 +36,4 @@ RUN set -eux; \
 WORKDIR /home/nonroot
 ENTRYPOINT ["/sbin/tini", "--"]
 
-CMD ["caddy"]
+CMD ["caddy", "run", "-config" "/home/nonroot/Caddyfile"]
