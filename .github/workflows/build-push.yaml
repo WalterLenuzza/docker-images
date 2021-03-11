@@ -36,7 +36,7 @@ jobs:
         with:
           images: waltlenu/caddy
           tag-sha: true
-          tag-latest: false
+          tag-latest: true
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
