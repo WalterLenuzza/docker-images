@@ -10,7 +10,6 @@ FROM alpine:3 as build
 # Install packages here
 # bind-tools is needed for DNS resolution to work in *some* Docker networks, but not all.
 RUN set -eux; \
-    addgroup -g 10000 -S nonroot && adduser -u 10000 -S -G nonroot -h /home/nonroot nonroot; \
     apk add --no-cache --update-cache --upgrade \
         bash \
         bats \
@@ -18,7 +17,8 @@ RUN set -eux; \
         caddy \
         curl \
         nss-tools \
-        tini
+        tini; \
+    addgroup -g 10000 -S nonroot && adduser -u 10000 -S -s /bin/bash -G nonroot -h /home/nonroot nonroot
 
 # Use the non-root user to run our application
 USER nonroot
