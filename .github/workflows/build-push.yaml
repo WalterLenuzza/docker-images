@@ -50,3 +50,27 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+
+      ##
+      ## Synchronet BBS
+      ##
+      - name: Docker meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        id: docker_meta
+        with:
+          images: waltlenu/sbbs
+          tag-sha: true
+          tag-latest: true
+          tag-semver: |
+            {{version}}
+            {{major}}.{{minor}}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./sbbs
+          file: ./sbbs/Dockerfile
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
