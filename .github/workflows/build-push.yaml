@@ -32,7 +32,7 @@ jobs:
       ##
       - name: Docker meta
         uses: crazy-max/ghaction-docker-meta@v1
-        id: docker_meta
+        id: docker_meta_caddy
         with:
           images: waltlenu/caddy
           tag-sha: true
@@ -48,15 +48,15 @@ jobs:
           file: ./caddy/Dockerfile
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
+          tags: ${{ steps.docker_meta_caddy.outputs.tags }}
+          labels: ${{ steps.docker_meta_caddy.outputs.labels }}
 
       ##
       ## Synchronet BBS
       ##
       - name: Docker meta
         uses: crazy-max/ghaction-docker-meta@v1
-        id: docker_meta
+        id: docker_meta_sbbs
         with:
           images: waltlenu/sbbs
           tag-sha: true
@@ -72,5 +72,5 @@ jobs:
           file: ./sbbs/Dockerfile
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
+          tags: ${{ steps.docker_meta_sbbs.outputs.tags }}
+          labels: ${{ steps.docker_meta_sbbs.outputs.labels }}
