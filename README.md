@@ -13,6 +13,7 @@ A collection of public Docker images, based on [Alpine Linux][alpine] official [
 | Image          | Size                                               | Pulls                                               |
 | -------------- | -------------------------------------------------- | --------------------------------------------------- |
 | [caddy](caddy) | ![](https://badgen.net/docker/size/waltlenu/caddy) | ![](https://badgen.net/docker/pulls/waltlenu/caddy) |
+| [sbbs](sbbs)   | ![](https://badgen.net/docker/size/waltlenu/sbbs)  | ![](https://badgen.net/docker/pulls/waltlenu/sbbs)  |
 
 ## License
 The code in this repository, unless otherwise noted, is APACHE licensed. See the [LICENSE](LICENSE) file in this repository.
